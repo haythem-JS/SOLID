@@ -1,0 +1,64 @@
+@startuml
+
+interface Door 
+{ 
+    void lock();
+    void unlock();
+    void open();
+    void close();
+}
+
+interface SensorClient 
+{ 
+    void proximityCallback();
+}
+
+interface TimerClient 
+{ 
+    void timeOutCallback();
+}
+
+class TimedDoor implements Door, TimerClient
+{ 
+    - static final int TIME_OUT = 100
+    - boolean _locked
+    - boolean _opened
+
+    + void TimedDoor(Timer timer)
+    + void lock()
+    + void unlock()
+    + void open()
+    + void close()
+    + void timeOutCallback()
+}
+
+class SensingDoor implements Door, SensorClient
+{ 
+    - boolean _locked
+    - boolean _opened
+
+    + void SensingDoor()
+    + void lock()
+    + void unlock()
+    + void open()
+    + void close()
+    + void proximityCallback()
+}
+
+class Sensor 
+{
+    - boolean isPersonClose
+    + void register(SensorClient sensorClient)
+}
+
+class Timer
+{
+    + void register(long timeOut, final TimerClient timerClient)
+}
+  
+TimedDoor -. Timer
+SensingDoor -. Sensor
+Timer -. TimerClient
+Sensor -. SensorClient
+
+@enduml

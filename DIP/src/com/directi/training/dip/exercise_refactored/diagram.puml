@@ -1,0 +1,62 @@
+@startuml
+
+
+class EncodingModuleClient
+{ 
+    + void main(String[] args)
+}
+  
+class EncodingModule
+{ 
+    + void encode(IReader reader, IWriter writer)
+}
+
+class MyDatabase 
+{
+    - static Map<Integer, String> _data
+    - static int _count = 0
+
+    + int write(String inputString)
+}
+  
+interface IReader {
+    void read()
+}
+
+interface IWriter {
+    void read()
+}
+
+class MyFileWriter implements IWriter 
+{
+    - String _fileName
+    
+    + MyFileWriter(String fileName)
+}
+
+class MyFileReader implements IReader 
+{
+    - String _fileName
+    
+    + MyFileReader(String fileName)
+}
+
+class MyDatabaseWriter implements IWriter 
+{
+}
+
+class MyNetworkReader implements IReader 
+{
+    - String _fileName
+    - String _protocol
+    - String _location
+    
+    + MyNetworkReader(String protocol, String location, String fileName)
+}
+
+EncodingModuleClient -. EncodingModule
+EncodingModule -. IWriter
+EncodingModule -. IReader
+MyDatabaseWriter -. MyDatabase
+
+@enduml
