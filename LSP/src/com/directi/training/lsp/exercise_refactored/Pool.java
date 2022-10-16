@@ -5,30 +5,21 @@ public class Pool
     public void run()
     {
         Duck donaldDuck = new Duck();
-        Electronic electricDuck = new ElectronicDuck();
-        quack(donaldDuck, electricDuck);
-        swim(donaldDuck, electricDuck);
+        quack(donaldDuck);
+        swim(donaldDuck);
     }
 
-    private void quack(IDuck... ducks)
+    private void quack(Duck... ducks)
     {
-        for (IDuck duck : ducks) {
-            try {
+        for (Duck duck : ducks) {
                 duck.quack();
-            } catch(IDuck.DuckException e) {
-
-            }
         }
     }
 
     private void swim(Duck... ducks)
     {
         for (Duck duck : ducks) {
-           try {
                 duck.swim();
-            } catch(IDuck.DuckException e) {
-                
-            }
         }
     }
 

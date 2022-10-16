@@ -3,5 +3,5 @@ package com.directi.training.dip.exercise_refactored;
 import java.io.IOException;
 
 public interface IReader {
-    void read()
+    String read() throws IOException;
 }

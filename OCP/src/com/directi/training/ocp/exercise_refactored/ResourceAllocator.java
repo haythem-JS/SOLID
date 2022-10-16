@@ -3,7 +3,7 @@ package com.directi.training.ocp.exercise_refactored;
 public class ResourceAllocator
 {
 
-    public int allocate( Resource resource)
+    public int allocate(Resource resource)
     {
         int resourceId;
         resourceId = resource.findFreeResourceSlot();

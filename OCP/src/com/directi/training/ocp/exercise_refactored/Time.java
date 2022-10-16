@@ -5,7 +5,7 @@ public class Time extends Resource
     private final int _resourceId;
 
 
-    public Time(double resourceId)
+    public Time(int resourceId)
     {
         _resourceId = resourceId;
     }

@@ -13,10 +13,10 @@ public class MyNetworkReader implements IReader {
     public MyNetworkReader(String protocol, String location, String fileName){
         _fileName = fileName;
         _protocol = protocol;
-        _location = location
+        _location = location;
     }
 
-    public void read() throws IOException{
+    public String read() throws IOException{
         URL url;
         url = new URL(_protocol, _location, _fileName);
         InputStream in;
@@ -30,6 +30,7 @@ public class MyNetworkReader implements IReader {
             c = reader.read();
         }
         String inputString = inputString1.toString();
+        return inputString;
     }   
     
 }

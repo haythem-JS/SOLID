@@ -1,27 +1,17 @@
 package com.directi.training.lsp.exercise_refactored;
 
-public class ElectronicDuck implements IDuck
+public class ElectronicDuck
 {
     private boolean _on = false;
 
-    @Override
-    public void quack() throws DuckIsOffException
+    public void quack()
     {
-        if (_on) {
             System.out.println("Electronic duck quack...");
-        } else {
-            throw new DuckIsOffException("Can't quack when off");
-        }
     }
 
-    @Override
-    public void swim() throws DuckIsOffException
+    public void swim()
     {
-        if (_on) {
             System.out.println("Electronic duck swim");
-        } else {
-            throw new DuckIsOffException("Can't swim when off");
-        }
     }
 
     public void turnOn()
@@ -32,11 +22,5 @@ public class ElectronicDuck implements IDuck
     public void turnOff()
     {
         _on = false;
-    }
-
-    public static class DuckIsOffException extends DuckException {
-        public DuckIsOffException (String messsage){
-            super(message);
-        }
     }
 }
